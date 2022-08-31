@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+      # Install dependencies needed for running tests
+      - pip install -r requirements.txt
+
+  build:
+    commands:
+      - echo "Running all unit tests"
+      - python manage.py test
+      # - grep -Fq "me" hello_world/views.py
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - '**/*'
+# artifacts:
+#   type: zip
+#   files:
+#     - 'django_test/**/*'
+#     - 'hello_world/**/*'
+#     - 'manage.py'
+#     - 'requirements.txt'

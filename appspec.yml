@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+    - source: /
+    - destination: /home/ubuntu/
+hooks:
+  BeforeInstall:
+      - pip3 install -r requirements.txt
+  AfterInstall:
+      - python manage.py runserver
